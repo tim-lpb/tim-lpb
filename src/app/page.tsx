@@ -9,19 +9,23 @@ export default function Home() {
             <div className="flex flex-1 flex-col">
                 <div className="flex-1 overflow-y-auto">
                     <div className="text-primary mx-auto flex max-w-2xl flex-1 flex-col gap-16 py-16 leading-[1.6] sm:py-32">
-                        <section className="flex flex-col gap-4 px-4">
-                            <Image
-                                src="/img/avatar.jpeg"
-                                alt="Avatar of Tim"
-                                width={100}
-                                height={100}
-                                draggable={false}
-                                className="mb-8 rounded-full select-none"
-                            />
+                        <section className="flex flex-col gap-2 px-4">
+                            <div className="flex gap-6 items-center">
+                                <div className="flex-shrink-0">
+                                    <Image
+                                        src="/img/avatar.jpeg"
+                                        alt="Avatar of Tim"
+                                        width={100}
+                                        height={100}
+                                        draggable={false}
+                                        className="mb-8 rounded-full select-none"
+                                    />
+                                </div>
 
-                            <h1 className="text-2xl font-semibold text-pretty sm:text-4xl">
-                                Hey I&apos;m Tim
-                            </h1>
+                                <h1 className="text-2xl font-semibold text-pretty sm:text-5xl mb-8">
+                                    Hi, I&apos;m Tim!
+                                </h1>
+                            </div>
 
                             <p className="text-secondary text-2xl font-semibold text-pretty">
                                 I&apos;m trying to learn and build cool things. Currently working on this portfolio.
