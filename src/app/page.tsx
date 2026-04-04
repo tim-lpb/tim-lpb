@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import {Section} from "@/components/ComponentsList";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export default function Home() {
@@ -9,9 +10,9 @@ export default function Home() {
             <div className="flex flex-1 flex-col">
                 <div className="flex-1 overflow-y-auto">
                     <div className="text-primary mx-auto flex max-w-2xl flex-1 flex-col gap-16 py-16 leading-[1.6] sm:py-32">
-                        <section className="flex flex-col gap-2 px-4">
+                        <Section className="gap-2">
                             <div className="flex gap-6 items-center">
-                                <div className="flex-shrink-0">
+                                <div className="shrink-0">
                                     <Image
                                         src="/img/avatar.jpeg"
                                         alt="Avatar of Tim"
@@ -22,7 +23,7 @@ export default function Home() {
                                     />
                                 </div>
 
-                                <h1 className="text-5xl font-semibold text-pretty sm:text-5xl mb-8">
+                                <h1 className="text-5xl font-semibold text-pretty mb-8">
                                     Hi, I&apos;m Tim!
                                 </h1>
                             </div>
@@ -30,12 +31,13 @@ export default function Home() {
                             <p className="text-secondary text-2xl font-semibold text-pretty">
                                 I&apos;m trying to learn and build cool things. Currently working on this portfolio.
                             </p>
-                        </section>
+                        </Section>
 
-                        <section className="flex flex-row gap-2 px-4">
+                        <Section className="flex-row">
                             <Link
                                 href="https://www.instagram.com/timlpb_/"
                                 target="_blank"
+                                rel="noopener noreferrer"
                                 className="group -ml-1 p-2 inline-flex items-center"
                             >
                                 <FaInstagram
@@ -47,6 +49,7 @@ export default function Home() {
                             <Link
                                 href="https://www.linkedin.com/in/timlpb/"
                                 target="_blank"
+                                rel="noopener noreferrer"
                                 className="group -ml-1 p-2 inline-flex items-center"
                             >
                                 <FaLinkedin
@@ -58,6 +61,7 @@ export default function Home() {
                             <Link
                                 href="https://github.com/tim-lpb"
                                 target="_blank"
+                                rel="noopener noreferrer"
                                 className="group -ml-1 p-2 inline-flex items-center"
                             >
                                 <FaGithub
@@ -65,7 +69,7 @@ export default function Home() {
                                     className="text-quarternary group-hover:text-primary select-none"
                                 />
                             </Link>
-                        </section>
+                        </Section>
                     </div>
                 </div>
             </div>
