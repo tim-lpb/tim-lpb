@@ -13,7 +13,7 @@ export default function Sidebar({ open, setOpen }: SidebarProps) {
     return (
         <>
             <div
-                className={`fixed top-0 left-0 h-full w-64 bg-white shadow-md z-40 transform transition-transform duration-300 ease-in-out
+                className={`fixed top-0 left-0 h-full w-80 bg-white shadow-md z-40 transform transition-transform duration-300 ease-in-out
           ${open ? "translate-x-0" : "-translate-x-full"}
         `}
             >
