@@ -62,9 +62,9 @@ export default function Header() {
                 onMouseEnter={() => setHoverReveal(true)}
                 onMouseLeave={() => setHoverReveal(false)}
                 className={cn(
-                    "sticky top-0 z-50 w-full bg-white px-6 py-1 transition-transform duration-300",
+                    "sticky top-0 z-50 w-full bg-white/10 backdrop-blur-sm px-6 py-1 transition-transform duration-300",
                     showHeader ? "translate-y-0" : "-translate-y-full",
-                    sidebarOpen && "bg-transparent"
+                    sidebarOpen && "bg-transparent backdrop-blur-none"
                 )}
             >
 
