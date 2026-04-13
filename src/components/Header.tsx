@@ -76,6 +76,7 @@ export default function Header() {
                         {sidebarOpen ? <FaTimes size={24}/> : <FaBars size={24}/>}
                     </button>
 
+                    //TODO: Only show first entry of the path, e.g. for /projects/abc show only projects
                     <Section className="gap-2">
                         {pageName && (
                             <div className="text-sm text-secondary">

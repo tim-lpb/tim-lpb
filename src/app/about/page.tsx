@@ -11,7 +11,7 @@ export default function Home() {
                 <div className="flex-1 overflow-y-auto">
                     <div className="text-primary mx-auto flex max-w-2xl flex-1 flex-col gap-8 py-8 leading-[1.6] text-justify">
                         <Section className="gap-4">
-                            <h1 className={"text-primary text-3xl font-semibold text-pretty underline underline-offset-2 decoration-2"}>
+                            <h1 className={"text-primary text-3xl font-semibold text-pretty"}>
                                 About me
                             </h1>
 

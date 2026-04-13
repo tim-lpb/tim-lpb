@@ -32,6 +32,12 @@ export default function Sidebar({ open, setOpen }: SidebarProps) {
                             className="text-2xl font-semibold text-pretty text-quarternary hover:text-primary transition">
                             About
                         </Link>
+                        <Link
+                            href="/projects"
+                            onClick={() => setOpen(false)}
+                            className="text-2xl font-semibold text-pretty text-quarternary hover:text-primary transition">
+                            Projects
+                        </Link>
                     </Section>
 
                     <Section className="flex-row">
