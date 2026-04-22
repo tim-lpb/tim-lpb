@@ -2,6 +2,7 @@ import { PropsWithChildren } from "react";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
+import Image from "next/image";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -30,16 +31,50 @@ export function InlineLink({ href, children }: PropsWithChildren<{ href: string 
     );
 }
 
-export function ProjectElement({href, children}: PropsWithChildren<{ href: string }>) {
+type ProjectCardProps = {
+    href: string;
+    title: string;
+    description: string;
+    imageSrc: string;
+    imageAlt: string;
+    className?: string;
+};
+
+export function ProjectCard({
+                                href,
+                                title,
+                                description,
+                                imageSrc,
+                                imageAlt,
+                                className = "",
+                            }: ProjectCardProps) {
     return (
         <Link
             href={href}
-            className="group h-40 rounded-xl border border-zinc-300 bg-white/70 p-3 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:scale-[1.02] hover:shadown-md">
-            <Section className="h-full justify-between gap-2 px-0">
-                {children}
-            </Section>
+            className={cn(
+                "group mx-auto block w-full max-w-[42rem] overflow-hidden rounded-2xl border border-zinc-300/80 bg-white/80 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg",
+                className
+            )}
+        >
+            {/* 16:9 Preview */}
+            <div className="relative aspect-video w-full overflow-hidden bg-zinc-100">
+                <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 44rem"
+                    className="object-cover transition-transform"
+                />
+            </div>
+
+            {/* Unterer Balken für Titel + Kurzbeschreibung */}
+            <div className="border-t border-zinc-300/70 bg-white/90 px-5 py-4 backdrop-blur-sm">
+                <h3 className="text-primary text-lg font-semibold text-pretty">{title}</h3>
+                <p className="text-secondary mt-1 text-sm leading-relaxed text-pretty">{description}</p>
+            </div>
         </Link>
-    )
+    );
 }
+
 
 {/* TODO: Add ore components, e.g. projects block */}
