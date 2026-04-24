@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
 import {cn, Section} from "@/components/ComponentsList";
 import Sidebar from "./Sidebar";
@@ -12,10 +12,13 @@ export default function Header() {
     const [hidden, setHidden] = useState(false);
     const [hoverReveal, setHoverReveal] = useState(false);
 
+    const router = useRouter();
     const pathname = usePathname();
     const lastY = useRef(0);
-    const pageName = pathname === "/" ? null : pathname.substring(1);
 
+    const segments = pathname.split("/").filter(Boolean);
+    const topLevelPage = segments[0] ?? null;
+    const isNestedPage = segments.length > 1;
     useEffect(() => {
         const threshold = 80; // Minimum scroll distance to trigger hide/show
         const minDelta = 6; // Ignore small scrolls to prevent flickering
@@ -49,7 +52,17 @@ export default function Header() {
 
     const scrollTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    };
+
+    const handlePageClick = () => {
+        if (!topLevelPage) return;
+
+        if (isNestedPage) {
+            router.push(`/${topLevelPage}`);
+        } else {
+            scrollTop();
+        }
+    };
 
     return (
         <>
@@ -62,9 +75,9 @@ export default function Header() {
                 onMouseEnter={() => setHoverReveal(true)}
                 onMouseLeave={() => setHoverReveal(false)}
                 className={cn(
-                    "sticky top-0 z-50 w-full bg-white px-6 py-1 transition-transform duration-300",
+                    "sticky top-0 z-50 w-full bg-white/10 backdrop-blur-sm px-2 py-1 transition-transform duration-300",
                     showHeader ? "translate-y-0" : "-translate-y-full",
-                    sidebarOpen && "bg-transparent"
+                    sidebarOpen && "bg-transparent backdrop-blur-none"
                 )}
             >
 
@@ -77,10 +90,16 @@ export default function Header() {
                     </button>
 
                     <Section className="gap-2">
-                        {pageName && (
+                        {topLevelPage && (
                             <div className="text-sm text-secondary">
                                 <Link
                                     href="/"
+                                    onClick={(e) => {
+                                        if (topLevelPage === "/") {
+                                            e.preventDefault();
+                                            scrollTop();
+                                        }
+                                    }}
                                     className="text-secondary text-xl font-medium hover:text-primary"
                                 >
                                     timlpb
@@ -89,10 +108,10 @@ export default function Header() {
                                 <span className="mx-1 text-xl font-medium">/</span>
 
                                 <button
-                                    onClick={scrollTop}
+                                    onClick={handlePageClick}
                                     className="text-secondary text-xl font-medium hover:text-primary"
                                 >
-                                    {pageName}
+                                    {topLevelPage}
                                 </button>
                             </div>
                         )}

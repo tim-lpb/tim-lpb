@@ -1,17 +1,22 @@
-import Image from "next/image";
+import {Metadata} from "next";
 import Link from "next/link";
 
 import {Section, InlineLink} from "@/components/ComponentsList";
 import {FaGithub, FaInstagram, FaLinkedin} from "react-icons/fa";
+
+export const metadata: Metadata = {
+    title: "About me",
+    description: "Hi, I&apos;m Tim. I&apos;m currently studying Biology and Computer Science at University of Bonn.",
+};
 
 export default function Home() {
     return (
         <>
             <div className="flex flex-1 flex-col">
                 <div className="flex-1 overflow-y-auto">
-                    <div className="text-primary mx-auto flex max-w-2xl flex-1 flex-col gap-8 py-50 leading-[1.6] text-justify">
+                    <div className="text-primary mx-auto flex max-w-2xl flex-1 flex-col gap-8 py-8 leading-[1.6] text-justify">
                         <Section className="gap-4">
-                            <h1 className={"text-primary text-3xl font-semibold text-pretty underline underline-offset-2 decoration-2"}>
+                            <h1 className={"text-primary text-3xl font-semibold text-pretty"}>
                                 About me
                             </h1>
 
